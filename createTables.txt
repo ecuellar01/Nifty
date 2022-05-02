@@ -1,0 +1,52 @@
+drop database javabook;
+create database javabook;
+create user 'user1'@'localhost' identified by 'user1';
+grant select, insert, update, delete, create, create view, drop,
+ execute, references on javabook.* to 'user1'@'localhost';
+
+use javabook;
+
+drop table if exists JOBLOG;
+drop table if exists USERLOG;
+drop table if exists JOBS;
+drop table if exists USERS;
+
+create table JOBS (
+  RefNum integer AUTO_INCREMENT, 
+  invoice double, 
+  cost double, 
+  hours integer,   
+  profit double,  
+  date date, 
+  user varchar(30),  
+  primary key (RefNum)
+); 
+
+create table USERS (
+userName varchar(30), 
+password varchar(30),
+firstName varchar(30), 
+lastName varchar(30),
+primary key (userName)
+);
+
+create table USERLOG(
+id integer AUTO_INCREMENT,
+userName varchar(30),
+password varchar(30),
+firstName varchar(30),
+lastName varchar(30),
+primary key(id)
+);
+
+create Table JOBLOG(
+  id integer AUTO_INCREMENT,
+  RefNum integer, 
+  invoice double, 
+  cost double, 
+  hours integer,   
+  profit double,  
+  date date, 
+  user varchar(30),  
+  primary key (id)
+); 
